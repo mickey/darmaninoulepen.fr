@@ -1,0 +1,233 @@
+@import "~picnic/picnic.min.css";
+@import "~include-media/dist/_include-media.scss";
+
+$breakpoints: (sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1400px);
+
+$color-primary: #33658a;
+$color-success: #419d78;
+$color-failure: #ce4760;
+$color-neutral: #333;
+$color-background: #fffdf5;
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: $color-background;
+}
+
+button {
+  background: $color-primary;
+  border-radius: 0;
+  padding: 0.8em 0.9em;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Annie Use Your Telescope', cursive;
+  font-size: 64px;
+
+  @include media(">xxl") {
+    font-size: 64px;
+
+    img {
+      max-height: 80px;
+    }
+  }
+
+  @include media(">xl", "<=xxl") {
+    font-size: 56px;
+
+    img {
+      max-height: 70px;
+    }
+  }
+
+  @include media(">lg", "<=xl") {
+    font-size: 48px;
+
+    img {
+      max-height: 60px;
+    }
+  }
+
+  @include media(">md", "<=lg") {
+    font-size: 36px;
+
+    img {
+      max-height: 50px;
+    }
+  }
+
+  @include media(">sm", "<=md") {
+    font-size: 28px;
+
+    img {
+      max-height: 40px;
+    }
+  }
+
+  @include media("<sm") {
+    font-size: 16px;
+
+    img {
+      max-height: 30px;
+    }
+  }
+
+  h1,
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.main {
+  padding: 0;
+  max-width: 1072px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#quiz-content {
+  border-width: 8px;
+  border-style: solid;
+}
+
+.border-primary {
+  border-color: $color-primary;
+}
+
+.border-success {
+  border-color: $color-success;
+}
+
+.border-failure {
+  border-color: $color-failure;
+}
+
+.background-primary {
+  background-color: $color-primary;
+}
+
+.background-success {
+  background-color: $color-success;
+}
+
+.background-failure {
+  background-color: $color-failure;
+}
+
+.content {
+  padding: 40px;
+}
+
+.quote {
+  font-family: 'Inknut Antiqua', serif;
+
+  @include media(">xl") {
+    font-size: 24px;
+    margin: 40px 0;
+  }
+
+  @include media(">lg", "<=xl") {
+    font-size: 22px;
+    margin: 30px 0;
+  }
+
+  @include media("<=lg") {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+
+  blockquote {
+    box-shadow: none;
+    padding: 20px 0;
+  }
+}
+
+.stats {
+  padding: 10px 0;
+  color: $color-background;
+  font-size: 24px;
+}
+
+.picker {
+  margin-top: 40px;
+  font-size: 24px;
+
+  button {
+    display: block;
+    width: 100%;
+  }
+}
+
+#answer {
+  h2 {
+    font-size: 36px;
+
+    &.ko {
+      color: $color-failure;
+    }
+
+    &.ok {
+      color: $color-success;
+    }
+  }
+
+  img {
+    max-height: 320px;
+  }
+
+  .quote {
+    margin: 0;
+  }
+
+  button {
+    font-size: 24px;
+    margin-top: 20px;
+    background-color: $color-neutral;
+    color: $color-background;
+  }
+}
+
+#results {
+  .score {
+    font-size: 72px;
+
+    span {
+      font-size: 24px;
+    }
+  }
+
+  #donut {
+    max-width: 200px;
+    // display: inline-block;
+    margin: 0 auto;
+    position: relative;
+
+    .donut-bg {
+      stroke: $color-primary;
+    }
+
+    .donut-text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      font-weight: 800;
+      color: #69829c;
+    }
+
+    .score-failure {
+      stroke: $color-failure;
+    }
+
+    .score-success {
+      stroke: $color-success;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    domain_name (0.5.20190701)
+      unf (>= 0.0.5, < 1.0.0)
+    down (5.2.2)
+      addressable (~> 2.5)
+    faraday (1.1.0)
+      multipart-post (>= 1.2, < 3)
+      ruby2_keywords
+    faraday-cookie_jar (0.0.7)
+      faraday (>= 0.8.0)
+      http-cookie (~> 1.0.0)
+    faraday-encoding (0.0.5)
+      faraday
+    faraday-http-cache (2.2.0)
+      faraday (>= 0.8)
+    faraday_middleware (1.0.0)
+      faraday (~> 1.0)
+    fastimage (2.1.7)
+    http-cookie (1.0.4)
+      domain_name (~> 0.5)
+    json (2.5.1)
+    metainspector (5.11.1)
+      addressable (~> 2.7.0)
+      faraday (~> 1.1.0)
+      faraday-cookie_jar (~> 0.0.7)
+      faraday-encoding (~> 0.0.5)
+      faraday-http-cache (~> 2.2.0)
+      faraday_middleware (~> 1.0.0)
+      fastimage (~> 2.1.7)
+      nesty (~> 1.0.2)
+      nokogiri (~> 1.11.0)
+    multipart-post (2.1.1)
+    nesty (1.0.2)
+    nokogiri (1.11.7-x86_64-linux)
+      racc (~> 1.4)
+    public_suffix (4.0.6)
+    racc (1.5.2)
+    ruby2_keywords (0.0.4)
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.7)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  down
+  json
+  metainspector
+
+BUNDLED WITH
+   2.2.3
