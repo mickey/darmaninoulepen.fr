@@ -42,6 +42,8 @@ const state = reactive({
   currentQuestionIndex: 1,
   totalQuestions: maxQuestions,
   goodAnswers: 0,
+  start: Date.now(),
+  score: null,
   screen: 'question',
   currentAnswer: null,
   quizQuestions: randomQuestions()
@@ -90,33 +92,45 @@ const Quiz = {
     finish: function() {
       state.screen = 'results';
       state.currentAnswer = null;
-      // var donut = new Donutty(document.getElementById("donut"));
+      state.score = Math.round(state.goodAnswers / state.totalQuestions * 100);
+
+      if (state.score <= 50) {
+        this.scoreClass = "color-failure";
+        this.resultTitle = data["result_title_failure"];
+      } else if (state.score <= 75) {
+        this.scoreClass = "color-not-bad";
+        this.resultTitle = data["result_title_not_bad"];
+      } else {
+        this.scoreClass = "color-success";
+        this.resultTitle = data["result_title_success"];
+      }
+
+      var timeToFinishInSeconds = Math.round((Date.now() - state.start) / 1000);
+      var minutes = Math.floor(timeToFinishInSeconds / 60);
+      var seconds = timeToFinishInSeconds - minutes * 60;
+      this.elapsedTime = "";
+      if (minutes > 0) {
+        this.elapsedTime += minutes + "mn ";
+      }
+      this.elapsedTime += seconds + "s";
     }
   },
   updated: function () {
     this.$nextTick(function () {
       if (state.screen === 'results') {
-        var score = Math.round(state.goodAnswers / state.totalQuestions * 100);
-
-        var scoreClass;
-        if (score <= 50) {
-          scoreClass = "score-failure";
-        } else if (score <= 75) {
-          scoreClass = "score-not-bad";
-        } else {
-          scoreClass = "score-success";
-        }
-
         var donut = new Donutty(document.getElementById("donut"), {
           min: 0,
           max: state.totalQuestions,
           value: state.goodAnswers,
           text: function(_) {
-            return "" + score + "%";
+            return "" + state.score + "%";
           }
         });
-        var fill = document.querySelector('.donut-fill');
-        fill.classList.add(scoreClass);
+        var fill = document.querySelectorAll('.donut-fill,.donut-text');
+        for (var i = 0; i < fill.length; ++i) {
+          fill[i].classList.add(this.scoreClass);
+        }
+
       }
     });
   },

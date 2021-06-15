@@ -190,6 +190,9 @@
       "source": "https: //twitter.com/MLP_officiel/status/1399671148573605891"
     }
   ],
+  "result_title_success": "Tu connais bien les bails 👏",
+  "result_title_failure": "T'as des progrès à faire !",
+  "result_title_not_bad": "Pas mal !",
   "ok": [
     "Oh oui oui !",
     "AH !",
