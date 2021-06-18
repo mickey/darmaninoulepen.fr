@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'development') {
   require('../index.html');
 }
 
-const maxQuestions = 12;
+const maxQuestions = 2;
 
 function randomQuestions() {
   var darmanin = shuffle.pick(data["darmanin"], {
@@ -62,6 +62,33 @@ function getCurrentQuestion() {
   };
 }
 
+function getElapsedTime() {
+  var timeToFinishInSeconds = Math.round((Date.now() - state.start) / 1000);
+  var minutes = Math.floor(timeToFinishInSeconds / 60);
+  var seconds = timeToFinishInSeconds - minutes * 60;
+  var elapsedTime = "";
+  if (minutes > 0) {
+    elapsedTime += minutes + "mn ";
+  }
+  elapsedTime += seconds + "s";
+
+  return elapsedTime;
+}
+
+function getShareLinks() {
+  var url = "https://darmaninoulepen.fr";
+  var twitterText = "Mon score: " + state.score + "%. Darmanin ou Le Pen, trouves qui l'a dit ? " + url;
+  var redditTitle = "Darmanin ou Le Pen, trouves qui l'a dit ?";
+
+
+  return {
+    reddit: encodeURI("https://reddit.com/submit/?url=" + url + "resubmit=true&amp;title=" + redditTitle),
+    twitter: encodeURI("https://twitter.com/intent/tweet/?text=" + twitterText),
+    facebook: encodeURI("https://facebook.com/sharer/sharer.php?u=" + url),
+    whatsapp: encodeURI("whatsapp://send?text=" + twitterText)
+  };
+}
+
 const Quiz = {
   data() {
     return {
@@ -105,14 +132,8 @@ const Quiz = {
         this.resultTitle = data["result_title_success"];
       }
 
-      var timeToFinishInSeconds = Math.round((Date.now() - state.start) / 1000);
-      var minutes = Math.floor(timeToFinishInSeconds / 60);
-      var seconds = timeToFinishInSeconds - minutes * 60;
-      this.elapsedTime = "";
-      if (minutes > 0) {
-        this.elapsedTime += minutes + "mn ";
-      }
-      this.elapsedTime += seconds + "s";
+      this.elapsedTime = getElapsedTime();
+      this.shareLinks = getShareLinks();
     }
   },
   updated: function () {
