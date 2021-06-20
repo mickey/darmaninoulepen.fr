@@ -10,7 +10,7 @@ file = File.read('./src/scripts/data.json')
 data_hash = JSON.parse(file)
 
 
-FileUtils.rm_rf("./public/images/articles/.", secure: true)
+FileUtils.rm_rf("./images/articles/.", secure: true)
 
 ["darmanin", "lepen"].each do |name|
   data_hash[name].each do |k, v|
@@ -21,8 +21,8 @@ FileUtils.rm_rf("./public/images/articles/.", secure: true)
       k['source_description'] = page.meta['og:description']
 
       filename = rand(10_000).to_s + File.extname(page.meta['og:image']).split("?")[0]
-      Down.download(page.meta['og:image'], destination: "./public/images/articles/#{filename}")
-      k['source_image'] = "/public/images/articles/#{filename}"
+      Down.download(page.meta['og:image'], destination: "./images/articles/#{filename}")
+      k['source_image'] = "/images/articles/#{filename}"
     end
   end
 end
