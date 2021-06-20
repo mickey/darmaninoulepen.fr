@@ -1,7 +1,7 @@
 <div class="quote-card">
   <article class="card">
     <% if (quote.source_type === 'article') { %>
-      <img src="<%= quote.source_image %>"/>
+      <img src="<%= quote.source_image %>" alt="<%= quote.source %>"/>
     <% } %>
     <% if (quote.source_type === 'embed' ) { %>
       <%- quote.source %>
