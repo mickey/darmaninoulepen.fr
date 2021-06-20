@@ -2,21 +2,14 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <% include _head.ejs %>
   <title>Gérald Darmanin ou Marine Le Pen ?</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Annie+Use+Your+Telescope&family=Open+Sans&family=Inknut+Antiqua:wght@600&display=swap"
-    rel="stylesheet">
+
 </head>
 
 <body>
-  <div class="title">
-    <img src="/public/images/darmanin.png">
-    <h1>Darmanin ou Le Pen ?</h1>
-    <img src="/public/images/lepen.png">
-  </div>
+  <% include _title.ejs %>
+
   <section class="main">
     <div id="quiz">
       <div id="quiz-content" v-cloak :class="borderClass">
@@ -154,23 +147,13 @@
       </div>
     </div>
 
+    <% include _footer.ejs %>
+
   </div>
 
   </section>
-  <script>window.twttr = (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0],
-        t = window.twttr || {};
-      if (d.getElementById(id)) return t;
-      js = d.createElement(s);
-      js.id = id;
-      js.src = "https://platform.twitter.com/widgets.js";
-      fjs.parentNode.insertBefore(js, fjs);
-      t._e = [];
-      t.ready = function (f) {
-        t._e.push(f);
-      };
-      return t;
-    }(document, "script", "twitter-wjs"));</script>
+  <% include _footer_scripts.ejs %>
+
 </body>
 
 </html>

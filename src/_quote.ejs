@@ -1,0 +1,20 @@
+<div class="quote-card">
+  <article class="card">
+    <% if (quote.source_type === 'article') { %>
+      <img src="<%= quote.source_image %>"/>
+    <% } %>
+    <% if (quote.source_type === 'embed' ) { %>
+      <%- quote.source %>
+    <% } %>
+
+    <footer>
+      <p><%= quote.quote %></p>
+
+      <% if (quote.source_type === 'article' || quote.source_type === 'tweet' ) { %>
+        <small>
+          <a target="_blank" href="<%= quote.source %>">Source</a>
+        </small>
+      <% } %>
+    </footer>
+  </article>
+</div>

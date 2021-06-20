@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <% include _head.ejs %>
+    <title>Gérald Darmanin ou Marine Le Pen ?</title>
+
+</head>
+
+<body>
+  <% include _title.ejs %>
+
+    <section class="main sources">
+
+      <h2>Gérald Darmanin</h2>
+      <div class="masonry">
+        <% data["darmanin"].forEach(function(quote){ %>
+          <%- include _quote.ejs %>
+        <% }); %>
+      </div>
+
+      <h2>Marine Le Pen</h2>
+      <div class="masonry">
+        <% data["lepen"].forEach(function(quote){ %>
+          <%- include _quote.ejs %>
+            <% }); %>
+      </div>
+
+      <% include _footer.ejs %>
+
+    </section>
+    <% include _footer_scripts.ejs %>
+
+</body>
+
+</html>

@@ -5,10 +5,10 @@ import { createApp, reactive } from 'vue';
 import donutty from 'donutty/dist/donutty';
 
 if (process.env.NODE_ENV === 'development') {
-  require('../index.html');
+  require('../index.ejs');
 }
 
-const maxQuestions = 2;
+const maxQuestions = 12;
 
 function randomQuestions() {
   var darmanin = shuffle.pick(data["darmanin"], {

@@ -2,6 +2,7 @@ const Path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const sourcesData = require('../src/scripts/data.json');
 
 module.exports = {
   entry: {
@@ -21,7 +22,19 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({ patterns: [{ from: Path.resolve(__dirname, '../public'), to: 'public' }] }),
     new HtmlWebpackPlugin({
-      template: Path.resolve(__dirname, '../src/index.html'),
+      template: Path.resolve(__dirname, '../src/index.ejs'),
+      filename: 'index.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: Path.resolve(__dirname, '../src/a_propos.ejs'),
+      filename: 'a_propos.html',
+    }),
+    new HtmlWebpackPlugin({
+      template: Path.resolve(__dirname, '../src/sources.ejs'),
+      filename: 'sources.html',
+      templateParameters: {
+        'data': sourcesData
+      },
     }),
   ],
   resolve: {
@@ -47,6 +60,10 @@ module.exports = {
             name: '[path][name].[ext]',
           },
         },
+      },
+      {
+        test: /\.ejs$/,
+        use: 'ejs-compiled-loader'
       },
     ],
   },
